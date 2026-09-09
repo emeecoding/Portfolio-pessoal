@@ -1,0 +1,296 @@
+/* header.css */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 16px;
+  width: 1150px;
+  z-index: 999999999;
+
+  background: var(--color-primary);
+
+  clip-path: polygon(20px 0,
+      calc(100% - 20px) 0,
+      100% 20px,
+      100% 100%,
+      calc(100% - 20px) 100%,
+      20px 100%,
+      0 100%,
+      0 20px);
+
+  filter:
+    drop-shadow(0 0 8px var(--color-primary)) drop-shadow(0 0 16px rgba(var(--color-primary-rgb), 0.35));
+
+  transition: filter 0.3s ease;
+}
+
+/* camada interna: fundo real do header */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: var(--color-bg);
+
+  clip-path: polygon(18px 0,
+      calc(100% - 18px) 0,
+      100% 18px,
+      100% 100%,
+      calc(100% - 18px) 100%,
+      18px 100%,
+      0 100%,
+      0 18px);
+
+  backdrop-filter: blur(var(--blur-amount));
+  -webkit-backdrop-filter: blur(var(--blur-amount));
+  z-index: -1;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* linha de scan sutil no topo */
+header::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent,
+      var(--color-primary),
+      transparent);
+  opacity: var(--header-scan-opacity);
+  transition: opacity 0.3s ease;
+}
+
+
+/* ===== Logo ===== */
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+header .logo i {
+  color: var(--color-primary);
+  font-size: 35px;
+  filter: drop-shadow(0 0 4px var(--color-primary));
+}
+
+header .logo a {
+  font-family: Graffit;
+  color: var(--color-primary);
+  font-size: 25px;
+  text-shadow: 0 0 6px var(--color-primary);
+  letter-spacing: 1px;
+  padding: 10px;
+}
+
+/* ===== Navegação ===== */
+header nav {
+  padding: 5px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+header ul {
+  display: flex;
+  gap: 2rem;
+}
+
+header ul li {
+  list-style: none;
+  cursor: pointer;
+}
+
+header ul li a {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 100%;
+  padding: 8px 16px;
+  color: var(--color-text);
+  font-size: 15px;
+  font-family: monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+
+  clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px);
+  border: 1px solid transparent;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+header ul li a:hover {
+  transform: translateY(-3px);
+  background: color-mix(in srgb, var(--color-text) 8%, transparent);
+  border-color: var(--color-primary);
+}
+
+header ul li a:active {
+  transform: translateY(0px);
+}
+
+header ul li a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg,
+      transparent,
+      rgba(255, 255, 255, 0.25),
+      transparent);
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
+}
+
+header ul li a:hover::before {
+  left: 125%;
+}
+
+header ul li i {
+  color: var(--color-text);
+  font-size: 20px;
+  transition: transform 0.25s ease;
+}
+
+header ul li a:hover i {
+  transform: scale(1.1);
+}
+
+/* ===== Item ativo ===== */
+header ul .active a {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border-color: var(--color-primary);
+}
+
+header ul .active a i {
+  color: var(--color-bg);
+}
+
+header ul .active a:hover {
+  background: var(--color-primary);
+  transform: translateY(-3px);
+}
+
+/* ===== Botão de tema (toggle) ===== */
+header .button-toggle i {
+  color: var(--color-primary);
+  font-size: 35px;
+  cursor: pointer;
+  transition: color 0.25s ease;
+  filter: drop-shadow(0 0 4px var(--color-primary));
+}
+
+header .button-toggle i.light {
+  color: var(--color-text);
+}
+
+
+/* ===== Botão hamburguer (oculto no desktop) ===== */
+header .menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+header .menu-toggle i {
+  color: var(--color-primary);
+  font-size: 28px;
+  filter: drop-shadow(0 0 4px var(--color-primary));
+  transition: transform 0.25s ease;
+}
+
+header .menu-toggle.active i {
+  transform: rotate(90deg);
+}
+
+
+
+@media (max-width: 768px) {
+
+  header {
+    left: 0;
+    width: 100%;
+    transform: none;
+    position: fixed;
+    z-index: 9999999;
+
+    filter: none;
+
+    /* IMPORTANTE */
+    clip-path: none;
+  }
+
+  header::before {
+    /* IMPORTANTE */
+    clip-path: none;
+  }
+
+  header .menu-toggle {
+    display: block;
+    order: 3;
+  }
+
+  header nav {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100dvh;
+
+    padding-top: 90px;
+
+    background: var(--color-bg);
+
+    backdrop-filter: blur(var(--blur-amount));
+    -webkit-backdrop-filter: blur(var(--blur-amount));
+
+    transform: translateX(100%);
+
+    z-index: 100000;
+
+    transition: transform 0.35s ease;
+  }
+
+  header nav.open {
+    transform: translateX(0);
+  }
+
+  header ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 2;
+    padding: 20px;
+  }
+
+  header ul li a {
+    width: 100%;
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  header .button-toggle {
+    order: 2;
+  }
+}

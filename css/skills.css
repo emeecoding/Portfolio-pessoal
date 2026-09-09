@@ -1,0 +1,126 @@
+/* ===== Seção Skills ===== */
+#skills {
+    position: relative;
+    background: var(--color-bg);
+    transition: background 0.3s ease;
+}
+
+/* ===== Grid de cards ===== */
+.cards-skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+
+/* ===== Card individual ===== */
+.skill-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 250px;
+    cursor: pointer;
+
+    /* fundo vira a "cor da borda" */
+    background: var(--color-primary);
+
+    /* cantos cortados em vez de arredondados */
+    clip-path: polygon(24px 0,
+            100% 0,
+            100% calc(100% - 24px),
+            calc(100% - 24px) 100%,
+            0 100%,
+            0 24px);
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+/* preenchimento interno (fundo real do card) */
+.skill-card::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    /* espessura da borda */
+    background: var(--color-bg);
+
+    clip-path: polygon(20px 0,
+            100% 0,
+            100% calc(100% - 20px),
+            calc(100% - 20px) 100%,
+            0 100%,
+            0 20px);
+
+    z-index: -1;
+    transition: background 0.3s ease;
+}
+
+.skill-card i {
+    font-size: 5.5rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.skill-card p {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-6px);
+    filter:
+        drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 16px rgba(var(--color-primary-rgb, 0, 255, 255), 0.35));
+}
+
+.skill-card:hover::before {
+    background: var(--color-primary);
+}
+
+.skill-card:hover i,
+.skill-card:hover p {
+    color: var(--color-bg);
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 768px) {
+    #skills {
+        padding: 60px 20px;
+    }
+
+    .cards-skills {
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto;
+        gap: 16px;
+    }
+
+    .skill-card {
+        width: calc(50% - 8px);
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .skill-card i {
+        font-size: 3rem;
+        margin-bottom: 6px;
+    }
+
+    .skill-card p {
+        font-size: 0.85rem;
+        text-align: center;
+        padding: 0 8px;
+    }
+}

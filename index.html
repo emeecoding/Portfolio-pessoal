@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Portfólio</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Script -->
+  <script defer src="js/script.js"></script>
+  <script defer src="js/animations.js"></script>
+</head>
+
+<body class="menu-open">
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="logo">
+      <i class="fa-solid fa-code"></i>
+      <a href="#home">Portfólio</a>
+    </div>
+
+    <nav class="navbar">
+      <ul class="list">
+        <li class="active">
+          <a href="#home"><i class="fa-regular fa-house"></i> Início</a>
+        </li>
+        <li>
+          <a href="#about"><i class="fa-regular fa-user"></i> Sobre</a>
+        </li>
+        <li>
+          <a href="#skills"><i class="fa-solid fa-sliders"></i> Habilidades</a>
+        </li>
+        <li>
+          <a href="#projects"><i class="fa-solid fa-computer"></i> Projetos</a>
+        </li>
+        <li>
+          <a href="#contact"><i class="fa-regular fa-headphones"></i> Contato</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="button-toggle">
+      <i class="fa-solid fa-circle-half-stroke"></i>
+    </div>
+
+    <!-- NOVO: botão hamburguer (só aparece no mobile) -->
+    <button class="menu-toggle" aria-label="Abrir menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- ===== Main ===== -->
+  <main>
+    <!-- Seção hero -->
+    <section id="home" class="hero">
+      <div class="image-content">
+        <img class="image-title" src="images/image-hero.png" alt="Emerson Cartoon 3D" />
+      </div>
+
+      <div class="hero-content">
+        <h1>Olá, eu sou Emerson Santos</h1>
+        <p>Desenvolvedor Full Stack apaixonado por design e tecnologia</p>
+        <p>RECIFE | BRASIL | UX/UI DESIGN</p>
+
+        <!-- Social Links-->
+        <div class="social-links">
+          <a href="https://github.com/seuusuario" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/seuusuario" target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://twitter.com/seuusuario" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://instagram.com/seuusuario" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://discord.gg/seuconvite" target="_blank">
+            <i class="fab fa-discord"></i>
+          </a>
+        </div>
+        <!-- Fim Social Links-->
+
+        <!-- Botões Hero-->
+        <div class="buttons-content">
+          <a href="#projects">Ver Projetos</a>
+          <a href="Currículo/Currículo-emerson-santos.pdf" download="Curriculo-Emerson-Santos.pdf">Download CV</a>
+        </div>
+        <!-- Fim Botões Hero-->
+
+      </div>
+    </section>
+    <!-- Fim Seção hero -->
+
+    <!-- Seção about -->
+    <section id="about" class="about">
+      <h2 class="section-title">Sobre</h2>
+
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            Me chamo <strong>Emerson</strong>, sou estudante de <strong>Engenharia de Software</strong>
+            e estou atualmente no <strong>4º período</strong> da graduação. Estudo programação desde
+            <strong>2022</strong> e, desde então, venho construindo uma base sólida em desenvolvimento web.
+          </p>
+          <p>
+            Hoje me considero um desenvolvedor <strong>Front-end</strong>, mas estou em constante evolução
+            para me tornar <strong>Full Stack</strong>. Ao longo dessa jornada, desenvolvi projetos acadêmicos
+            e de portfólio, participei de atividades extensionistas e criei jogos 2D em Python, além de
+            projetos com integração a bancos de dados.
+          </p>
+          <p>
+            Essas experiências me ajudaram a desenvolver não só habilidades técnicas, mas também disciplina
+            e visão prática para resolver problemas reais através do código.
+          </p>
+          <p>
+            Atualmente, estou em busca de uma oportunidade de <strong>Estágio</strong> para colocar meus
+            conhecimentos em prática, aprender com profissionais da área e me preparar para os desafios do
+            mercado de tecnologia.
+          </p>
+
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <span class="highlight-number">4º</span>
+              <span class="highlight-label">Período</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-number">2022</span>
+              <span class="highlight-label">Início na programação</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-number">Front-end</span>
+              <span class="highlight-label">Foco atual</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <div class="cube-decoration"></div>
+          <img src="images/image-about.png" alt="Foto de Emerson Santos" />
+        </div>
+      </div>
+    </section>
+    <!-- Fim Seção about -->
+
+    <!--  Seção Habilidades -->
+    <section id="skills">
+      <h2 class="section-title">Habilidades</h2>
+      <div class="cards-skills">
+        <div class="skill-card">
+          <i class="fab fa-html5"></i>
+          <p>HTML</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-css3-alt"></i>
+          <p>CSS</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-js"></i>
+          <p>JavaScript</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-react"></i>
+          <p>React</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-wind"></i>
+          <p>Tailwind</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-sass"></i>
+          <p>Sass</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-git-alt"></i>
+          <p>Git</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-github"></i>
+          <p>GitHub</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-python"></i>
+          <p>Python</p>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-figma"></i>
+          <p>Figma</p>
+        </div>
+      </div>
+    </section>
+    <!-- Fim Seção Habilidades -->
+
+    <!--  Seção Projetos -->
+    <section id="projects">
+      <h2 class="section-title">Projetos</h2>
+
+      <div class="cards-projects">
+
+        <article class="project-card">
+          <div class="card-visual">
+            <img src="images/imagem-clubedaleitura.png" alt="Clube da Leitura" />
+            <div class="card-overlay">
+              <a href="#" class="btn-view">Ver projeto <i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3>Protótipo | Clube da Leitura</h3>
+
+            <p>
+              Protótipo de uma plataforma online voltada para livros e leitura.
+              O projeto ainda está em fase de planejamento e prototipação, com foco na criação da interface,
+              organização das páginas e experiência do usuário antes do início do desenvolvimento.
+            </p>
+            <div class="card-tech">
+              <i class="fa-brands fa-figma" title="Figma"></i>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="card-visual">
+            <img src="images/imagem-atividade-extensionistas1.png" alt="NestJS API Todo List" />
+            <div class="card-overlay">
+              <a href="https://atividade-extensao.vercel.app" target="_blank" class="btn-view">Ver projeto <i
+                  class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3>Atividade Extensionistas I</h3>
+
+            <p>
+              Plataforma desenvolvida com foco na redução das desigualdades e na inclusão digital.
+              O projeto oferece cursos gratuitos de tecnologia para alunos de escolas públicas em
+              áreas socialmente vulneráveis, ampliando o acesso ao conhecimento e a novas oportunidades.
+            </p>
+            <div class="card-tech">
+              <i class="fa-brands fa-react" title="ReactJS"></i>
+              <i class="fa-solid fa-wand-magic-sparkles" title="GSAP"></i>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="card-visual">
+            <img src="images/imagem-portfolio-academico.png" alt="NestJS API Todo List" />
+            <div class="card-overlay">
+              <a href="https://emeecoding.github.io/emerson-santos-portfolio/" target="_blank" class="btn-view">Ver
+                projeto <i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3>Portfólio Acadêmico</h3>
+
+            <p>
+              Portfólio acadêmico desenvolvido com HTML, CSS e JavaScript puro, com o objetivo
+              de apresentar minha trajetória, conhecimentos, habilidades e interesses durante
+              minha formação em Engenharia de Software.
+            </p>
+            <div class="card-tech">
+              <i class="fa-brands fa-html5" title="HTML"></i>
+              <i class="fa-brands fa-css3-alt" title="CSS"></i>
+              <i class="fab fa-js" title="JavaScript"></i>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="card-visual">
+            <img src="images/imagem-coinRush.png" alt="NestJS API Todo List" />
+            <div class="card-overlay">
+              <a href="#" class="btn-view">Ver projeto <i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3>Coin Rush | Jogo 2D</h3>
+
+            <p>
+              Projeto acadêmico desenvolvido com Python e Pygame, com o objetivo de criar um jogo
+              de plataforma 2D. No Coin Rush, o jogador deve percorrer as plataformas coletando
+              moedas enquanto evita cair, pois uma queda resulta na perda de vida.
+            </p>
+            <div class="card-tech">
+
+              <i class="fa-brands fa-python" title="Python"></i>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="card-visual">
+            <img src="images/imagem-vibetrip.png" alt="NestJS API Todo List" />
+            <div class="card-overlay">
+              <a href="#" class="btn-view">Ver projeto <i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3>Vibe Trip | Site de Viagens</h3>
+
+            <p>
+              Protótipo de um site de viagens criado no Figma, com foco em uma experiência moderna e intuitiva. O
+              projeto está atualmente em fase de desenvolvimento.
+            </p>
+            <div class="card-tech">
+              <i class="fa-brands fa-figma" title="Figma"></i>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="card-visual">
+            <img src="images/imagem-emebank.png" alt="NestJS API Todo List" />
+            <div class="card-overlay">
+              <a href="https://www.figma.com/proto/QW00tGtbJrS0qVmdDcJ4HG/Emebank?node-id=26-12&p=f&viewport=250%2C243%2C0.41&t=w64XSv3Pxsyu7jqe-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=26%3A3&page-id=0%3A1"
+                class="btn-view" target="_blank">Ver projeto <i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3>Emebank | Protótipo Bancário</h3>
+
+            <p>
+              Protótipo de um aplicativo bancário desenvolvido no Figma como atividade acadêmica.
+              Inspirado no Nubank, o Emebank foi projetado com foco em uma interface moderna, simples
+              e intuitiva para facilitar o acesso a serviços financeiros.
+            </p>
+            <div class="card-tech">
+              <i class="fa-brands fa-figma" title="Figma"></i>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="card-visual">
+            <img src="images/imagem-emebank.png" alt="NestJS API Todo List" />
+            <div class="card-overlay">
+              <a href="https://www.figma.com/proto/QW00tGtbJrS0qVmdDcJ4HG/Emebank?node-id=26-12&p=f&viewport=250%2C243%2C0.41&t=w64XSv3Pxsyu7jqe-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=26%3A3&page-id=0%3A1"
+                class="btn-view" target="_blank">Ver projeto <i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3>Emebank | Protótipo Bancário</h3>
+
+            <p>
+              Protótipo de um aplicativo bancário desenvolvido no Figma como atividade acadêmica.
+              Inspirado no Nubank, o Emebank foi projetado com foco em uma interface moderna, simples
+              e intuitiva para facilitar o acesso a serviços financeiros.
+            </p>
+            <div class="card-tech">
+              <i class="fa-brands fa-figma" title="Figma"></i>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+    <!-- Fim Seção Projetos -->
+
+    <!-- Seção Contato -->
+    <section id="contact" class="contact">
+      <h2 class="section-title">Contato</h2>
+
+      <p class="contact-subtitle">Tem um projeto em mente? Vamos conversar!</p>
+
+      <div class="contact-grid">
+        <!-- E-mail: abre o app de email padrão -->
+        <a href="mailto:emersonsantosdev@gmail.com" class="contact-card">
+          <div class="contact-icon">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <span class="contact-label">E-mail</span>
+          <span class="contact-value">emersonsantosdev@gmail.com</span>
+        </a>
+
+        <!-- WhatsApp: abre conversa direto (web ou app, dependendo do dispositivo) -->
+        <a href="https://wa.me/5581984589196" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-icon">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <span class="contact-label">WhatsApp</span>
+          <span class="contact-value">(81) 98458-9196</span>
+        </a>
+
+        <!-- LinkedIn: abre o perfil numa nova aba -->
+        <a href="https://www.linkedin.com/in/emecoding/" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-icon">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </div>
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">@emecoding</span>
+        </a>
+
+        <!-- GitHub: abre o perfil numa nova aba -->
+        <a href="https://github.com/emeecoding" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-icon">
+            <i class="fa-brands fa-github"></i>
+          </div>
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">@emeecoding</span>
+        </a>
+      </div>
+    </section>
+    <!-- Fim Seção Contato -->
+
+    <footer class="footer">
+      <p>© 2026 Emerson Santos — Desenvolvedor Front-end</p>
+      <div class="footer-socials">
+        <a href="https://github.com/SEU-USUARIO" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://linkedin.com/in/SEU-USUARIO" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://wa.me/SEUNUMERO" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+      </div>
+    </footer>
+
+  </main>
+</body>
+
+</html>

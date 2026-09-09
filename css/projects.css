@@ -1,0 +1,191 @@
+/* ===== Seção Projects===== */
+#projects {
+    position: relative;
+    background: var(--color-bg);
+    transition: background 0.3s ease;
+}
+
+
+/* ===== Grid de cards ===== */
+.cards-projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+
+    /* <- adicionado: centraliza o grid dentro da seção */
+    margin: 0 auto;
+
+}
+
+/* ===== Card ===== */
+.project-card {
+    position: relative;
+    isolation: isolate;
+    padding: 8px;
+    flex: 1 1 420px;
+    /* antes 420px — card menor */
+
+    background: var(--color-primary);
+
+    /* cantos cortados em vez de box-shadow sólido */
+    clip-path: polygon(16px 0,
+            100% 0,
+            100% calc(100% - 16px),
+            calc(100% - 16px) 100%,
+            0 100%,
+            0 16px);
+
+    transition: filter 0.3s ease;
+}
+
+/* preenchimento interno do card */
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    /* espessura da borda */
+    background: var(--color-bg);
+
+    clip-path: polygon(14px 0,
+            100% 0,
+            100% calc(100% - 14px),
+            calc(100% - 14px) 100%,
+            0 100%,
+            0 14px);
+
+    z-index: -1;
+    transition: background 0.3s ease;
+}
+
+.project-card:hover {
+    filter:
+        drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 14px rgba(var(--color-primary-rgb, 0, 255, 255), 0.3));
+}
+
+/* ===== Imagem / visual do card ===== */
+.card-visual {
+    position: relative;
+    width: 100%;
+    /* antes 260px — acompanha card menor */
+    overflow: hidden;
+
+    clip-path: polygon(10px 0,
+            100% 0,
+            100% calc(100% - 10px),
+            calc(100% - 10px) 100%,
+            0 100%,
+            0 10px);
+}
+
+.card-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.project-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.project-card:hover .card-visual img {
+    transform: scale(1.05);
+}
+
+/* ===== Botão "ver projeto" ===== */
+.btn-view {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 26px;
+    background: var(--color-primary);
+    color: var(--color-bg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+
+    clip-path: polygon(8px 0,
+            100% 0,
+            100% calc(100% - 8px),
+            calc(100% - 8px) 100%,
+            0 100%,
+            0 8px);
+
+    transform: translateY(15px);
+    opacity: 0;
+    transition: all 0.35s ease 0.05s;
+}
+
+.project-card:hover .btn-view {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.btn-view:hover {
+    filter: brightness(1.1);
+}
+
+/* ===== Informações do card ===== */
+.card-info {
+    padding: 18px 6px 6px;
+}
+
+.card-info h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+}
+
+.card-info p {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.card-tech {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.card-tech i {
+    font-size: 1.2rem;
+    color: var(--color-text);
+    opacity: 0.85;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.card-tech i:hover {
+    opacity: 1;
+    color: var(--color-primary);
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 768px) {
+    #projects {
+        padding: 60px 24px;
+    }
+
+    .title-projects img {
+        width: 280px;
+    }
+}

@@ -1,0 +1,174 @@
+/* styles.css */
+
+@import url("./header.css");
+@import url("./hero.css");
+@import url("./about.css");
+@import url("./skills.css");
+@import url("./projects.css");
+@import url("./contact.css");
+@import url("./footer.css");
+
+/* ============================================================
+   FONTES
+   ============================================================ */
+
+@font-face {
+  font-family: Graffit;
+  src: url(../fonts/NetworkFreeVersion.ttf);
+}
+
+@font-face {
+  font-family: Jacksilver;
+  src: url(../fonts/Jacksilver.otf);
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins;
+  text-decoration: none;
+}
+
+
+/* ============================================================
+   TEMA — variáveis (dark padrão / light via [data-theme])
+   ============================================================ */
+
+:root {
+  /* ===== Tema escuro (padrão) ===== */
+  --color-primary: #B026FF;
+  --color-primary-rgb: 176, 38, 255;
+
+  --color-bg: #0a0a0f;
+  /* fundo geral / header */
+  --color-surface: #12121a;
+  /* cards, superfícies elevadas */
+  --color-text: #f5f5f7;
+  /* texto principal */
+  --color-gray: #8a8a90;
+  /* texto secundário */
+
+  --header-border-opacity: 1;
+  --header-scan-opacity: 0.6;
+  --blur-amount: 15px;
+
+  /* ===== Tipografia ===== */
+  --fonte-primary: Poppins;
+  --size-text: 17px;
+}
+
+[data-theme="light"] {
+  /* mesmo tom, escurecido pra manter contraste em fundo claro */
+  --color-primary: #B026FF;
+  --color-primary-rgb: 123, 27, 178;
+
+  --color-bg: #f4f6f8;
+  --color-surface: #ffffff;
+  --color-text: #14141a;
+  --color-gray: #5a5a62;
+
+  --header-border-opacity: 0.85;
+  --header-scan-opacity: 0.35;
+  --blur-amount: 10px;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  transition: background 0.3s ease;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Títulos de todas as sections ===== */
+.section-title {
+  position: relative;
+  width: fit-content;
+  margin: 0 0 45px 75px;
+  padding: 0 18px;
+  color: #B026FF;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(176, 38, 255, 0.25);
+}
+
+.section-title::before,
+.section-title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 45px;
+  height: 2px;
+  background: #B026FF;
+  box-shadow: 0 0 8px rgba(176, 38, 255, 0.5);
+}
+
+.section-title::before {
+  right: 100%;
+}
+
+.section-title::after {
+  left: 100%;
+}
+
+
+section {
+  padding: 100px 75px;
+
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 6px;
+  border: 2px solid var(--color-bg);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.2);
+}
+
+
+
+@media (max-width: 768px) {
+
+
+  .section-title {
+    margin: 0 auto 45px auto;
+    text-align: center;
+    font-size: 1.5rem;
+
+    margin-top: 30px;
+
+  }
+}
