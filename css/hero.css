@@ -117,16 +117,16 @@
 .buttons-content {
   display: flex;
   justify-content: center;
-  flex-direction: column;
   margin-top: 30px;
   width: 100%;
+  gap: 2rem;
 }
 
 .buttons-content a {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  width: 100%;
+  width: 200px;
 
   display: inline-flex;
   align-items: center;
