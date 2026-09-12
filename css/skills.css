@@ -1,126 +1,223 @@
-/* ===== Seção Skills ===== */
-#skills {
-    position: relative;
-    background: var(--color-bg);
-    transition: background 0.3s ease;
+/* ==========================================================
+   APRESENTAÇÃO
+========================================================== */
+
+.skills-intro {
+  max-width: 620px;
+  margin: 0 0 48px;
+
+  color: var(--color-gray);
+  font-size: 16px;
+  line-height: 1.8;
 }
 
-/* ===== Grid de cards ===== */
-.cards-skills {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px 20px;
+/* ==========================================================
+   BLOCOS DE HABILIDADES
+========================================================== */
+
+.skills-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
-/* ===== Card individual ===== */
+.skill-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+
+  width: 100%;
+  margin: 0;
+  padding: 32px;
+
+  background: var(--color-surface);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.18);
+  border-radius: 20px;
+}
+
+/* Coluna com número e descrição */
+.skill-info {
+  width: 260px;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+.skill-number {
+  display: block;
+  margin-bottom: 16px;
+
+  color: var(--color-primary);
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.skill-info h3 {
+  margin: 0 0 12px;
+
+  color: var(--color-text);
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.skill-info p {
+  margin: 0;
+
+  color: var(--color-gray);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.skill-label {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 7px 12px;
+
+  background: var(--color-bg);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  border-radius: 8px;
+
+  color: var(--color-text);
+  font-size: 12px;
+}
+
+/* ==========================================================
+   CARTÕES DAS TECNOLOGIAS
+========================================================== */
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .skill-card {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
+  /* Divide o espaço e permite quebrar para outra linha */
+  flex: 1 1 160px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 250px;
-    height: 250px;
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 
-    /* fundo vira a "cor da borda" */
-    background: var(--color-primary);
+  min-width: 0;
+  min-height: 170px;
+  padding: 24px;
 
-    /* cantos cortados em vez de arredondados */
-    clip-path: polygon(24px 0,
-            100% 0,
-            100% calc(100% - 24px),
-            calc(100% - 24px) 100%,
-            0 100%,
-            0 24px);
+  background: var(--color-bg);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.14);
+  border-radius: 14px;
 
-    transition:
-        transform 0.3s ease,
-        filter 0.3s ease;
-}
-
-/* preenchimento interno (fundo real do card) */
-.skill-card::before {
-    content: "";
-    position: absolute;
-    inset: 4px;
-    /* espessura da borda */
-    background: var(--color-bg);
-
-    clip-path: polygon(20px 0,
-            100% 0,
-            100% calc(100% - 20px),
-            calc(100% - 20px) 100%,
-            0 100%,
-            0 20px);
-
-    z-index: -1;
-    transition: background 0.3s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .skill-card i {
-    font-size: 5.5rem;
-    color: var(--color-primary);
-    margin-bottom: 10px;
-    transition: color 0.3s ease;
+  margin-bottom: 18px;
+
+  color: var(--color-primary);
+  font-size: 38px;
+}
+
+.skill-card h4 {
+  margin: 0 0 6px;
+
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .skill-card p {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin: 0;
-    transition: color 0.3s ease;
+  margin: 0;
+
+  color: var(--color-gray);
+  font-size: 12px;
+  line-height: 1.7;
 }
 
-.skill-card:hover {
-    transform: translateY(-6px);
-    filter:
-        drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 16px rgba(var(--color-primary-rgb, 0, 255, 255), 0.35));
+@media (hover: hover) {
+  .skill-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
+  }
 }
 
-.skill-card:hover::before {
-    background: var(--color-primary);
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1000px) {
+  .skill-group {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .skill-info {
+    width: 100%;
+    max-width: 540px;
+  }
+
+  .skill-list {
+    width: 100%;
+  }
 }
 
-.skill-card:hover i,
-.skill-card:hover p {
-    color: var(--color-bg);
-}
+/* ==========================================================
+   CELULAR
+========================================================== */
 
-/* ===== Responsivo ===== */
 @media (max-width: 768px) {
-    #skills {
-        padding: 60px 20px;
-    }
+  .skills-intro {
+    margin-bottom: 32px;
+    font-size: 14px;
+    text-align: center;
+  }
 
-    .cards-skills {
-        width: 100%;
-        max-width: 340px;
-        margin: 0 auto;
-        gap: 16px;
-    }
+  .skills-content {
+    gap: 24px;
+  }
 
-    .skill-card {
-        width: calc(50% - 8px);
-        height: auto;
-        aspect-ratio: 1 / 1;
-    }
+  .skill-group {
+    padding: 22px;
+  }
 
-    .skill-card i {
-        font-size: 3rem;
-        margin-bottom: 6px;
-    }
+  .skill-number {
+    font-size: 36px;
+  }
 
-    .skill-card p {
-        font-size: 0.85rem;
-        text-align: center;
-        padding: 0 8px;
-    }
+  .skill-info h3 {
+    font-size: 21px;
+  }
+
+  .skill-list {
+    gap: 12px;
+  }
+
+  .skill-card {
+    flex-basis: 130px;
+    min-height: 155px;
+    padding: 20px;
+  }
+
+  .skill-card i {
+    font-size: 32px;
+  }
+
+  .skill-card h4 {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-card {
+    transition: none;
+  }
 }

@@ -1,4 +1,6 @@
-/* styles.css */
+/* ==========================================================
+   ARQUIVOS DE ESTILO
+========================================================== */
 
 @import url("./header.css");
 @import url("./hero.css");
@@ -8,64 +10,48 @@
 @import url("./contact.css");
 @import url("./footer.css");
 
-/* ============================================================
+/* ==========================================================
    FONTES
-   ============================================================ */
+========================================================== */
 
 @font-face {
-  font-family: Graffit;
-  src: url(../fonts/NetworkFreeVersion.ttf);
+  font-family: "Graffit";
+  src: url("../fonts/NetworkFreeVersion.ttf") format("truetype");
+  font-display: swap;
 }
 
 @font-face {
-  font-family: Jacksilver;
-  src: url(../fonts/Jacksilver.otf);
+  font-family: "Jacksilver";
+  src: url("../fonts/Jacksilver.otf") format("opentype");
+  font-display: swap;
 }
 
-/* ============================================================
-   RESET
-   ============================================================ */
+/* ==========================================================
+   CORES E VARIÁVEIS
+========================================================== */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Poppins;
-  text-decoration: none;
-}
-
-
-/* ============================================================
-   TEMA — variáveis (dark padrão / light via [data-theme])
-   ============================================================ */
-
+/* Tema escuro — padrão */
 :root {
-  /* ===== Tema escuro (padrão) ===== */
-  --color-primary: #B026FF;
+  --color-primary: #b026ff;
   --color-primary-rgb: 176, 38, 255;
 
   --color-bg: #0a0a0f;
-  /* fundo geral / header */
   --color-surface: #12121a;
-  /* cards, superfícies elevadas */
   --color-text: #f5f5f7;
-  /* texto principal */
   --color-gray: #8a8a90;
-  /* texto secundário */
 
   --header-border-opacity: 1;
   --header-scan-opacity: 0.6;
   --blur-amount: 15px;
 
-  /* ===== Tipografia ===== */
-  --fonte-primary: Poppins;
+  --fonte-primary: "Poppins", sans-serif;
   --size-text: 17px;
 }
 
-[data-theme="light"] {
-  /* mesmo tom, escurecido pra manter contraste em fundo claro */
-  --color-primary: #B026FF;
-  --color-primary-rgb: 123, 27, 178;
+/* Tema claro */
+html[data-theme="light"] {
+  --color-primary: #b026ff;
+  --color-primary-rgb: 176, 38, 255;
 
   --color-bg: #f4f6f8;
   --color-surface: #ffffff;
@@ -77,17 +63,52 @@
   --blur-amount: 10px;
 }
 
-/* ============================================================
+/* ==========================================================
+   RESET
+========================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ==========================================================
    BASE
-   ============================================================ */
+========================================================== */
 
 html {
   scroll-behavior: smooth;
+
+  /* Altura do header + distância do topo + espaço */
+  scroll-padding-top: 100px;
 }
 
 body {
+  position: relative;
+  isolation: isolate;
+
   background: var(--color-bg);
-  transition: background 0.3s ease;
+  color: var(--color-text);
+
+  font-family: var(--fonte-primary);
+  font-size: var(--size-text);
 }
 
 main {
@@ -95,80 +116,194 @@ main {
   flex-direction: column;
 }
 
-/* ===== Títulos de todas as sections ===== */
-.section-title {
-  position: relative;
-  width: fit-content;
-  margin: 0 0 45px 75px;
-  padding: 0 18px;
-  color: #B026FF;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  text-shadow: 0 0 12px rgba(176, 38, 255, 0.25);
+img {
+  max-width: 100%;
 }
 
+/* ==========================================================
+   FUNDO ANIMADO
+========================================================== */
+
+#background-animation {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ==========================================================
+   SEÇÕES PRINCIPAIS
+========================================================== */
+
+/* Não afeta as seções internas de habilidades e sobre */
+main > section {
+  width: 100%;
+  max-width: 1400px;
+  min-width: 0;
+  margin-inline: auto;
+  padding: 100px 32px;
+
+  overflow-wrap: anywhere;
+}
+
+/* Compensa o padding ao navegar pelos links do menu */
+main > section[id] {
+  scroll-margin-top: -100px;
+}
+
+/* A hero possui seu próprio espaçamento */
+main > section.hero {
+  scroll-margin-top: 0;
+}
+
+/* ==========================================================
+   TÍTULOS DAS SEÇÕES
+========================================================== */
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 45px;
+  padding: 0;
+
+  color: var(--color-primary);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 12px rgba(var(--color-primary-rgb), 0.25);
+}
+
+/* Traços decorativos ao lado do título */
 .section-title::before,
 .section-title::after {
   content: "";
-  position: absolute;
-  top: 50%;
-  width: 45px;
+
+  width: 40px;
   height: 2px;
-  background: #B026FF;
-  box-shadow: 0 0 8px rgba(176, 38, 255, 0.5);
+  flex-shrink: 0;
+
+  background: var(--color-primary);
+  box-shadow:
+    0 0 8px rgba(var(--color-primary-rgb), 0.5);
 }
 
-.section-title::before {
-  right: 100%;
+/* ==========================================================
+   CURSORES
+========================================================== */
+
+body {
+  cursor: url("../images/cursor-purple-small.svg") 3 2, auto;
 }
 
-.section-title::after {
-  left: 100%;
+a,
+button,
+[role="button"] {
+  cursor: url("../images/pointer-purple-small.svg") 10 2, pointer;
 }
 
-
-section {
-  padding: 100px 75px;
-
+a *,
+button *,
+[role="button"] * {
+  cursor: inherit;
 }
 
-/* ============================================================
-   SCROLLBAR
-   ============================================================ */
+input,
+textarea {
+  cursor: text;
+  caret-color: var(--color-primary);
+}
+
+/* ==========================================================
+   SELEÇÃO DE TEXTO
+========================================================== */
+
+::selection {
+  background: #7918b5;
+  color: #ffffff;
+}
+
+/* ==========================================================
+   BARRA DE ROLAGEM
+========================================================== */
 
 ::-webkit-scrollbar {
-  width: 16px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--color-bg);
-  transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-primary);
-  border-radius: 6px;
-  border: 2px solid var(--color-bg);
-  transition: background 0.3s ease, border-color 0.3s ease;
+  border: 3px solid var(--color-bg);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  filter: brightness(1.2);
+  background: #7918b5;
 }
 
+/* ==========================================================
+   HEADER MOBILE
+========================================================== */
 
+@media (max-width: 1050px) {
+  html {
+    scroll-padding-top: 92px;
+  }
+}
+
+/* ==========================================================
+   CELULAR
+========================================================== */
 
 @media (max-width: 768px) {
+  main > section {
+    padding: 60px 20px;
+  }
 
+  main > section[id] {
+    scroll-margin-top: -60px;
+  }
+
+  main > section.hero {
+    scroll-margin-top: 0;
+  }
 
   .section-title {
-    margin: 0 auto 45px auto;
-    text-align: center;
+    gap: 10px;
+    margin: 0 auto 32px;
+
     font-size: 1.5rem;
+    letter-spacing: 2px;
+    text-align: center;
+  }
 
-    margin-top: 30px;
+  .section-title::before,
+  .section-title::after {
+    width: 20px;
+  }
+}
 
+/* ==========================================================
+   ACESSIBILIDADE
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

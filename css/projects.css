@@ -1,191 +1,318 @@
-/* ===== Seção Projects===== */
-#projects {
-    position: relative;
-    background: var(--color-bg);
-    transition: background 0.3s ease;
+/* ==========================================================
+   PROJETOS — substitua todo o projects.css
+========================================================== */
+
+.projects-intro {
+  max-width: 600px;
+  margin: 0 0 40px;
+
+  color: var(--color-gray);
+  font-size: 15px;
+  line-height: 1.8;
 }
 
-
-/* ===== Grid de cards ===== */
-.cards-projects {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 28px;
-
-    /* <- adicionado: centraliza o grid dentro da seção */
-    margin: 0 auto;
-
+.project-list {
+  display: block;
+  position: relative;
+  isolation: isolate;
 }
 
-/* ===== Card ===== */
+.project-step {
+  position: relative;
+  width: 100%;
+  margin: 0 0 56px;
+}
+
+.project-step:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================
+   CARTÃO — texto à esquerda e imagem à direita
+========================================================== */
+
 .project-card {
-    position: relative;
-    isolation: isolate;
-    padding: 8px;
-    flex: 1 1 420px;
-    /* antes 420px — card menor */
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: stretch;
 
-    background: var(--color-primary);
+  width: 100%;
+  min-height: 460px;
+  margin: 0;
+  padding: 16px;
 
-    /* cantos cortados em vez de box-shadow sólido */
-    clip-path: polygon(16px 0,
-            100% 0,
-            100% calc(100% - 16px),
-            calc(100% - 16px) 100%,
-            0 100%,
-            0 16px);
+  background: var(--color-surface);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.22);
+  border-radius: 24px;
 
-    transition: filter 0.3s ease;
+  transform-origin: center top;
 }
 
-/* preenchimento interno do card */
-.project-card::before {
-    content: "";
-    position: absolute;
-    inset: 2px;
-    /* espessura da borda */
-    background: var(--color-bg);
-
-    clip-path: polygon(14px 0,
-            100% 0,
-            100% calc(100% - 14px),
-            calc(100% - 14px) 100%,
-            0 100%,
-            0 14px);
-
-    z-index: -1;
-    transition: background 0.3s ease;
+.project-card,
+.project-card * {
+  box-sizing: border-box;
 }
 
-.project-card:hover {
-    filter:
-        drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 14px rgba(var(--color-primary-rgb, 0, 255, 255), 0.3));
+/* ==========================================================
+   IMAGEM — painel com fundo sutil
+========================================================== */
+
+.project-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 55%;
+  min-width: 0;
+  padding: 28px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(var(--color-primary-rgb), 0.14),
+    var(--color-bg)
+  );
+
+  border: 1px solid rgba(var(--color-primary-rgb), 0.12);
+  border-radius: 16px;
 }
 
-/* ===== Imagem / visual do card ===== */
-.card-visual {
-    position: relative;
-    width: 100%;
-    /* antes 260px — acompanha card menor */
-    overflow: hidden;
+.project-image img {
+  display: block;
 
-    clip-path: polygon(10px 0,
-            100% 0,
-            100% calc(100% - 10px),
-            calc(100% - 10px) 100%,
-            0 100%,
-            0 10px);
+  width: 100%;
+  max-width: 100%;
+  height: 340px;
+
+  object-fit: contain;
+  border-radius: 10px;
 }
 
-.card-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    transition: transform 0.5s ease;
+/* ==========================================================
+   TEXTO
+========================================================== */
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  width: 45%;
+  min-width: 0;
+  padding: 32px;
+
+  overflow-wrap: anywhere;
 }
 
-.card-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(10, 10, 10, 0.75);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.35s ease;
+.project-label {
+  margin: 0 0 20px;
+  padding-left: 12px;
+
+  border-left: 3px solid var(--color-primary);
+
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-.project-card:hover .card-overlay {
-    opacity: 1;
+.project-info h3 {
+  margin: 0 0 18px;
+
+  color: var(--color-text);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -1px;
 }
 
-.project-card:hover .card-visual img {
-    transform: scale(1.05);
+.project-description {
+  margin: 0 0 24px;
+
+  color: var(--color-gray);
+  font-size: 14px;
+  line-height: 1.9;
 }
 
-/* ===== Botão "ver projeto" ===== */
-.btn-view {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
+/* ==========================================================
+   TECNOLOGIAS
+========================================================== */
 
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 26px;
-    background: var(--color-primary);
-    color: var(--color-bg);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 
-    clip-path: polygon(8px 0,
-            100% 0,
-            100% calc(100% - 8px),
-            calc(100% - 8px) 100%,
-            0 100%,
-            0 8px);
-
-    transform: translateY(15px);
-    opacity: 0;
-    transition: all 0.35s ease 0.05s;
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
 }
 
-.project-card:hover .btn-view {
-    transform: translateY(0);
-    opacity: 1;
+.project-tags li {
+  padding: 6px 11px;
+
+  background: rgba(var(--color-primary-rgb), 0.08);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.16);
+  border-radius: 6px;
+
+  color: var(--color-text);
+  font-size: 11px;
+  font-weight: 500;
 }
 
-.btn-view:hover {
-    filter: brightness(1.1);
+/* ==========================================================
+   LINK DO PROJETO
+========================================================== */
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  min-height: 46px;
+  max-width: 100%;
+  padding: 10px 0;
+
+  border-bottom: 2px solid var(--color-primary);
+
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: color 0.25s ease;
 }
 
-/* ===== Informações do card ===== */
-.card-info {
-    padding: 18px 6px 6px;
+.project-link i {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  font-size: 14px;
+
+  transition: transform 0.25s ease;
 }
 
-.card-info h3 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--color-text);
-    transition: color 0.3s ease;
-}
-
-.card-info p {
-    color: var(--color-gray);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 14px;
-}
-
-.card-tech {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.card-tech i {
-    font-size: 1.2rem;
-    color: var(--color-text);
-    opacity: 0.85;
-    transition: opacity 0.2s ease, color 0.2s ease;
-}
-
-.card-tech i:hover {
-    opacity: 1;
+@media (hover: hover) {
+  .project-link:hover {
     color: var(--color-primary);
+  }
+
+  .project-link:hover i {
+    transform: translate(3px, -3px);
+  }
 }
 
-/* ===== Responsivo ===== */
-@media (max-width: 768px) {
-    #projects {
-        padding: 60px 24px;
-    }
+.project-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 5px;
+}
 
-    .title-projects img {
-        width: 280px;
-    }
+/* Projetos que ainda não possuem link */
+.project-status {
+  margin: 0;
+  padding: 10px 0 10px 12px;
+
+  border-left: 2px solid rgba(var(--color-primary-rgb), 0.35);
+
+  color: var(--color-gray);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1100px) {
+  .project-info {
+    padding: 24px;
+  }
+
+  .project-info h3 {
+    font-size: 27px;
+  }
+
+  .project-image {
+    padding: 18px;
+  }
+}
+
+/* ==========================================================
+   CELULAR — imagem acima da descrição
+========================================================== */
+
+@media (max-width: 900px) {
+  .projects-intro {
+    margin-bottom: 28px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .project-step {
+    margin-bottom: 32px;
+  }
+
+  .project-card {
+    flex-direction: column;
+    min-height: auto;
+    padding: 12px;
+    border-radius: 20px;
+  }
+
+  .project-image {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .project-image img {
+    height: 240px;
+  }
+
+  .project-info {
+    width: 100%;
+    padding: 24px 12px 16px;
+  }
+
+  .project-label {
+    margin-bottom: 16px;
+    font-size: 10px;
+  }
+
+  .project-info h3 {
+    font-size: 26px;
+  }
+
+  .project-description {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .project-tags {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-image img {
+    height: 190px;
+  }
+
+  .project-info h3 {
+    font-size: 23px;
+  }
+}
+
+/* ==========================================================
+   ACESSIBILIDADE
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .project-link,
+  .project-link i {
+    transition: none;
+  }
 }

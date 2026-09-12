@@ -1,93 +1,285 @@
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
+  function initAnimations() {
+    if (!window.gsap || !window.ScrollTrigger) {
+      console.error(
+        "Animações: GSAP e ScrollTrigger precisam carregar primeiro.",
+      );
+      return;
+    }
+
     gsap.registerPlugin(ScrollTrigger);
 
-    const tlHero = gsap.timeline({ defaults: { ease: "power3.out" } });
+    /* ======================================================
+       FUNÇÃO AUXILIAR
+       Anima cada elemento quando ele entra na tela.
+    ====================================================== */
 
-    tlHero
-        .from(".hero .image-title", { opacity: 0, scale: 0.8, rotate: -8, duration: 1 })
-        .from(".hero-content p", { opacity: 0, y: 20, stagger: 0.15, duration: 0.6 }, "-=0.6")
-        .from(".hero .social-links a", { opacity: 0, y: 15, stagger: 0.08, duration: 0.4 }, "-=0.2")
-        .from(".hero .buttons-content a", { opacity: 0, y: 15, stagger: 0.1, duration: 0.4 }, "-=0.2");
+    function reveal(selector, options = {}) {
+      const elements = gsap.utils.toArray(selector);
 
+      elements.forEach((element) => {
+        gsap.from(element, {
+          opacity: 0,
+          y: 24,
+          duration: 0.8,
+          ease: "power2.out",
 
-    /* ============================================================
-       TIMELINE 2 — SOBRE (dispara quando a seção entra na tela)
-       ============================================================ */
-    const tlAbout = gsap.timeline({
-        scrollTrigger: {
-            trigger: "#about",
-            start: "top 70%",
-            // markers: true, // descomente pra depurar visualmente o disparo
+          ...options,
+
+          scrollTrigger: {
+            trigger: element,
+            start: "top 95%",
+            once: true,
+          },
+        });
+      });
+    }
+
+    /* ======================================================
+       HERO — apresentação em sequência
+    ====================================================== */
+
+    const hero = document.querySelector("#home");
+
+    if (hero) {
+      const timeline = gsap.timeline({
+        defaults: {
+          duration: 0.8,
+          ease: "power2.out",
         },
-        defaults: { ease: "power2.out" },
+      });
+
+      function animateHero(selector, options, position) {
+        const elements = hero.querySelectorAll(selector);
+
+        if (!elements.length) return;
+
+        timeline.from(elements, options, position);
+      }
+
+      animateHero(".hero-availability", {
+        opacity: 0,
+        y: 20,
+      });
+
+      animateHero(
+        ".hero-greeting",
+        {
+          opacity: 0,
+          y: 20,
+        },
+        "-=0.5",
+      );
+
+      animateHero(
+        ".hero-name",
+        {
+          opacity: 0,
+          y: 35,
+          duration: 1,
+        },
+        "-=0.5",
+      );
+
+      animateHero(
+        ".hero-role",
+        {
+          opacity: 0,
+          y: 24,
+        },
+        "-=0.6",
+      );
+
+      animateHero(
+        ".hero-description, .hero-details",
+        {
+          opacity: 0,
+          y: 20,
+          stagger: 0.15,
+        },
+        "-=0.4",
+      );
+
+      animateHero(
+        ".hero-actions",
+        {
+          opacity: 0,
+          y: 20,
+        },
+        "-=0.4",
+      );
+
+      animateHero(
+        ".hero-socials, .hero-signature",
+        {
+          opacity: 0,
+          y: 16,
+          stagger: 0.15,
+        },
+        "-=0.4",
+      );
+    }
+
+    /* ======================================================
+       TÍTULOS DAS SEÇÕES
+    ====================================================== */
+
+    reveal("main > section > .section-title", {
+      y: 20,
+      duration: 0.8,
     });
 
-    tlAbout
-        .from("#about .section-title", { opacity: 0, x: -40, duration: 0.6 })
-        .from("#about .about-text p", { opacity: 0, y: 20, stagger: 0.15, duration: 0.6 }, "-=0.2")
-        .from("#about .highlight-item", { opacity: 0, y: 20, stagger: 0.12, duration: 0.5 }, "-=0.2")
-        .from("#about .cube-decoration", { opacity: 0, scale: 0.6, rotate: 0, duration: 0.8 }, "-=0.6")
-        .from("#about .about-image img", { opacity: 0, scale: 0.85, duration: 0.8 }, "-=0.6");
+    /* ======================================================
+       SOBRE
+    ====================================================== */
 
+    reveal("#about .about-label");
 
-    /* ============================================================
-       TIMELINE 3 — HABILIDADES
-       ============================================================ */
-    const tlSkills = gsap.timeline({
-        scrollTrigger: {
-            trigger: "#skills",
-            start: "top 75%",
-        },
+    reveal("#about .about-heading", {
+      y: 30,
+      duration: 1,
     });
 
-    tlSkills
-        .from("#skills .section-title", { opacity: 0, x: -40, duration: 0.6, ease: "power2.out" })
-        .from("#skills .skill-card", {
-            opacity: 0,
-            y: 30,
-            scale: 0.8,
-            stagger: 0.06,
-            duration: 0.5,
-            ease: "back.out(1.7)",
-        }, "-=0.2");
+    reveal("#about .about-text > p:not(.about-label)");
 
-
-    /* ============================================================
-       TIMELINE 4 — PROJETOS
-       ============================================================ */
-    const tlProjects = gsap.timeline({
-        scrollTrigger: {
-            trigger: "#projects",
-            start: "top 75%",
-        },
+    reveal("#about .about-goal", {
+      y: 30,
+      duration: 0.9,
     });
 
-    tlProjects
-        .from("#projects .section-title", { opacity: 0, x: -40, duration: 0.6, ease: "power2.out" })
-        .from("#projects .project-card", {
-            opacity: 0,
-            y: 40,
-            stagger: 0.15,
-            duration: 0.6,
-            ease: "power2.out",
-        }, "-=0.2");
-
-
-    /* ============================================================
-       TIMELINE 5 — CONTATO
-       ============================================================ */
-    const tlContact = gsap.timeline({
-        scrollTrigger: {
-            trigger: "#contact",
-            start: "top 75%",
-        },
+    reveal("#about .about-photo", {
+      y: 35,
+      duration: 1,
     });
 
-    tlContact
-        .from("#contact .section-title", { opacity: 0, x: -40, duration: 0.6, ease: "power2.out" })
-        .from("#contact .title-forms", { opacity: 0, y: 20, duration: 0.5 }, "-=0.2")
-        .from("#contact .contact-subtitle", { opacity: 0, y: 15, duration: 0.5 }, "-=0.3")
-        .from("#contact .form-group", { opacity: 0, y: 20, stagger: 0.12, duration: 0.5 }, "-=0.2")
-        .from("#contact .btn-submit", { opacity: 0, y: 15, duration: 0.5 }, "-=0.2");
+    reveal("#about .about-info");
 
-});
+    /* ======================================================
+       HABILIDADES
+    ====================================================== */
+
+    reveal("#skills .skills-intro");
+
+    reveal("#skills .skill-info", {
+      y: 28,
+      duration: 0.9,
+    });
+
+    // Anima o conteúdo interno para preservar o hover dos cartões.
+    document.querySelectorAll("#skills .skill-card").forEach((card) => {
+      const content = card.querySelectorAll("i, h4, p");
+
+      if (!content.length) return;
+
+      gsap.from(content, {
+        opacity: 0,
+        y: 15,
+        stagger: 0.1,
+        duration: 0.65,
+        ease: "power2.out",
+
+        scrollTrigger: {
+          trigger: card,
+          start: "top 95%",
+          once: true,
+        },
+      });
+    });
+
+    /* ======================================================
+       PROJETOS
+       Os cartões são controlados somente pelo projects.js.
+    ====================================================== */
+
+    reveal("#projects .projects-intro");
+
+    /* ======================================================
+       CONTATO
+    ====================================================== */
+
+    reveal("#contact .contact-label");
+
+    reveal("#contact .contact-heading", {
+      y: 30,
+      duration: 1,
+    });
+
+    reveal("#contact .contact-description");
+    reveal("#contact .contact-note");
+
+    // Anima os itens externos, mantendo o hover dos links.
+    reveal("#contact .contact-list > li", {
+      y: 25,
+      duration: 0.8,
+    });
+
+    /* ======================================================
+       RODAPÉ
+    ====================================================== */
+
+    const footer = document.querySelector(".footer");
+
+    if (footer) {
+      gsap.from(footer, {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+
+        scrollTrigger: {
+          trigger: footer,
+          start: "top bottom",
+          once: true,
+        },
+      });
+    }
+
+    /* ======================================================
+       ATUALIZAÇÃO DAS POSIÇÕES
+    ====================================================== */
+
+    let refreshTimer;
+
+    function updatePositions() {
+      clearTimeout(refreshTimer);
+
+      refreshTimer = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 200);
+    }
+
+    // Recalcula após carregar imagens que alteram o layout.
+    document.querySelectorAll("main img").forEach((img) => {
+      if (!img.complete) {
+        img.addEventListener("load", updatePositions, {
+          once: true,
+        });
+
+        img.addEventListener("error", updatePositions, {
+          once: true,
+        });
+      }
+    });
+
+    if (document.fonts) {
+      document.fonts.ready.then(updatePositions);
+    }
+
+    if (document.readyState === "complete") {
+      updatePositions();
+    } else {
+      window.addEventListener("load", updatePositions, {
+        once: true,
+      });
+    }
+  }
+
+  // Funciona tanto no head com defer quanto no final do body.
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAnimations, {
+      once: true,
+    });
+  } else {
+    initAnimations();
+  }
+})();
+s;

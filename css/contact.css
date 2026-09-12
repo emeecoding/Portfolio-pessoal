@@ -1,147 +1,244 @@
-/* contact.css */
+/* ==========================================================
+   ORGANIZAÇÃO
+========================================================== */
 
-/* ===== Seção Contato ===== */
-.contact {
-    text-align: center;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background: var(--color-bg);
-    transition: background 0.3s ease;
+.contact-content {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+
+  width: 100%;
+  color: var(--color-text);
 }
 
-
-
-.contact-subtitle {
-    color: var(--color-primary);
-    opacity: 0.8;
-    margin-bottom: 3.5rem;
+.contact-text,
+.contact-links {
+  flex: 1;
+  min-width: 0;
 }
 
-/* ===== Grid de contatos ===== */
-.contact-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2.5rem;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+/* ==========================================================
+   APRESENTAÇÃO
+========================================================== */
 
-/* ===== Card individual ===== */
-.contact-card {
-    position: relative;
-    isolation: isolate;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.6rem;
-    width: 170px;
-    padding: 1.5rem 1rem;
-    text-decoration: none;
-
-    transition: transform 0.25s ease;
-}
-
-.contact-card:hover {
-    transform: translateY(-6px);
-}
-
-/* ===== Ícone (moldura cortada, mesma linguagem visual do resto do site) ===== */
-.contact-icon {
-    position: relative;
-    isolation: isolate;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 70px;
-    height: 70px;
-
-    background: var(--color-primary);
-
-    clip-path: polygon(14px 0,
-            100% 0,
-            100% calc(100% - 14px),
-            calc(100% - 14px) 100%,
-            0 100%,
-            0 14px);
-
-    transition: filter 0.3s ease;
-}
-
-.contact-icon::before {
-    content: "";
-    position: absolute;
-    inset: 2px;
-    background: var(--color-bg);
-
-    clip-path: polygon(12px 0,
-            100% 0,
-            100% calc(100% - 12px),
-            calc(100% - 12px) 100%,
-            0 100%,
-            0 12px);
-
-    z-index: -1;
-    transition: background 0.3s ease;
-}
-
-.contact-icon i {
-    font-size: 1.6rem;
-    color: var(--color-primary);
-    transition: color 0.3s ease;
-}
-
-.contact-card:hover .contact-icon {
-    filter:
-        drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 14px rgba(var(--color-primary-rgb), 0.4));
-}
-
-.contact-card:hover .contact-icon::before {
-    background: var(--color-primary);
-}
-
-.contact-card:hover .contact-icon i {
-    color: var(--color-bg);
-}
-
-/* ===== Textos ===== */
 .contact-label {
-    font-weight: 700;
-    color: var(--color-text);
-    font-size: 1rem;
+  margin: 0 0 14px;
+
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.contact-heading {
+  margin: 0 0 24px;
+
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -1px;
+}
+
+.contact-heading span {
+  display: block;
+  color: var(--color-primary);
+}
+
+.contact-description {
+  max-width: 480px;
+  margin: 0 0 24px;
+
+  color: var(--color-gray);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.contact-note {
+  margin: 0;
+  padding-left: 16px;
+
+  border-left: 3px solid var(--color-primary);
+
+  color: var(--color-gray);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* ==========================================================
+   LISTA DE CONTATOS
+========================================================== */
+
+.contact-links {
+  /* Remove o itálico padrão da tag address */
+  font-style: normal;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ==========================================================
+   CARTÕES
+========================================================== */
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  width: 100%;
+  padding: 22px;
+
+  background: var(--color-surface);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.18);
+  border-radius: 16px;
+
+  color: var(--color-text);
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 48px;
+  height: 48px;
+
+  background: var(--color-bg);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+  border-radius: 12px;
+
+  color: var(--color-primary);
+  font-size: 22px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-name {
+  color: var(--color-text);
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .contact-value {
-    color: var(--color-gray);
-    font-size: 0.85rem;
-    word-break: break-word;
+  color: var(--color-gray);
+  font-size: 13px;
+  line-height: 1.6;
+
+  /* Permite que o e-mail caiba em telas pequenas */
+  overflow-wrap: anywhere;
 }
 
-/* ===== Responsivo ===== */
+.contact-arrow {
+  flex-shrink: 0;
+
+  color: var(--color-primary);
+  font-size: 14px;
+
+  transition: transform 0.25s ease;
+}
+
+/* ==========================================================
+   INTERAÇÃO
+========================================================== */
+
+@media (hover: hover) {
+  .contact-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-primary);
+  }
+
+  .contact-card:hover .contact-arrow {
+    transform: translateX(3px);
+  }
+}
+
+.contact-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 900px) {
+  .contact-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+  }
+
+  .contact-description {
+    max-width: 620px;
+  }
+}
+
+/* ==========================================================
+   CELULAR
+========================================================== */
+
 @media (max-width: 768px) {
-    .contact {
-        height: auto;
-        padding: 80px 20px 60px;
-    }
+  .contact-heading {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
 
-    .contact-grid {
-        gap: 1.8rem;
-    }
+  .contact-description {
+    font-size: 14px;
+  }
 
-    .contact-card {
-        width: calc(50% - 0.9rem);
-    }
+  .contact-card {
+    gap: 12px;
+    padding: 18px;
+  }
 
-    .contact-icon {
-        width: 60px;
-        height: 60px;
-    }
+  .contact-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
 
-    .contact-icon i {
-        font-size: 1.4rem;
-    }
+  .contact-name {
+    font-size: 14px;
+  }
+
+  .contact-value {
+    font-size: 12px;
+  }
+
+  .contact-arrow {
+    font-size: 12px;
+  }
+}
+
+/* ==========================================================
+   MOVIMENTO REDUZIDO
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-card,
+  .contact-arrow {
+    transition: none;
+  }
 }
